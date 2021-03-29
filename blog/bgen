@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# static site generator
+# github.com/ayyekou
+
+date=$(date "+%d-%m-%Y")
+
+read -p "title: " title;
+cp ./template.html ./$date.html;
+sed -i "s/¬/$title/g" $date.html;
+echo "			<li><a href="blog/$date.html">$title</a></li>" >> ../index.html;
+$EDITOR $date.html
+
